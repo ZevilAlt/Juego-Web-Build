@@ -6,14 +6,9 @@
     <title>Unity WebGL Player | Juego Simulator</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-    <div class="game-container">
-      <canvas id="unity-canvas" width="1280" height="720" tabindex="-1"></canvas>
-    </div>
-    <footer class="footer">
-      &copy; 2026 Juego Simulator. All rights reserved.
-    </footer>
-    <script src="Build/0.2.0.loader.js"></script>
+  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
+    <canvas id="unity-canvas" width=1920 height=1080 tabindex="-1" style="width: 1920px; height: 1080px; background: #231F20"></canvas>
+    <script src="Build/0.2.2.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         var meta = document.createElement('meta');
@@ -23,9 +18,9 @@
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/0.2.0.data.unityweb",
-        frameworkUrl: "Build/0.2.0.framework.js.unityweb",
-        codeUrl: "Build/0.2.0.wasm.unityweb",
+        dataUrl: "Build/0.2.2.data.unityweb",
+        frameworkUrl: "Build/0.2.2.framework.js.unityweb",
+        codeUrl: "Build/0.2.2.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Juego Simulator",
