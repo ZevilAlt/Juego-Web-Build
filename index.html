@@ -5,9 +5,72 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Juego Simulator</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* ── Unity TemplateData defaults ── */
+      * { box-sizing: border-box; }
+      body { padding: 0; margin: 0; background-color: #1a1a1a; display: flex; flex-direction: column; align-items: center; height: 100vh; overflow: hidden; font-family: sans-serif; }
+      #unity-container { position: absolute; }
+      #unity-container.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+      #unity-container.unity-mobile { position: fixed; width: 100%; height: 100%; }
+      #unity-canvas { background: #231F20; }
+      .unity-mobile #unity-canvas { width: 100%; height: 100%; }
+      #unity-loading-bar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: none; }
+      #unity-logo { width: 154px; height: 130px; background: url('TemplateData/unity-logo-dark.png') no-repeat center; }
+      #unity-progress-bar-empty { width: 141px; height: 18px; margin-top: 10px; margin-left: 6.5px; background: url('TemplateData/progress-bar-empty-dark.png') no-repeat center; }
+      #unity-progress-bar-full { width: 0%; height: 18px; margin-top: 10px; background: url('TemplateData/progress-bar-full-dark.png') no-repeat center; }
+      #unity-footer { position: relative; }
+      .unity-mobile #unity-footer { display: none; }
+      #unity-webgl-logo { float: left; width: 204px; height: 38px; background: url('TemplateData/webgl-logo.png') no-repeat center; }
+      #unity-build-title { float: right; margin-right: 10px; line-height: 38px; font-family: arial; font-size: 18px; }
+      #unity-fullscreen-button { cursor: pointer; float: right; width: 38px; height: 38px; background: url('TemplateData/fullscreen-button.png') no-repeat center; }
+      #unity-warning { position: absolute; left: 50%; top: 5%; transform: translate(-50%); background: white; padding: 10px; display: none; }
+
+      /* ── Custom layout styles ── */
+      .footer {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1a1a1a;
+        color: #aaaaaa;
+        font-size: 14px;
+        border-top: 1px solid #333333;
+      }
+      .shortcuts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 25px;
+        max-width: 1200px;
+        padding: 0 15px;
+      }
+      .shortcut {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .shortcut b {
+        background: #2e2e2e;
+        padding: 3px 8px;
+        border-radius: 4px;
+        color: #dddddd;
+        font-size: 12px;
+        border: 1px solid #444444;
+      }
+      .game-container {
+        width: 100%;
+        height: calc(100vh - 80px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1a1a1a;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+    </style>
   </head>
-  <body style="background-color: #1a1a1a;">
+  <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1280 height=720 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
